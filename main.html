@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Events map — 25‑year sliding window</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+  <!-- Local stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <div class="panel" id="controlPanel" aria-live="polite">
+    <h3>Events timeline 25‑year window</h3>
+
+    <div class="row">
+      <label>Window start year</label>
+      <input id="yearSlider" class="slider" type="range" min="1100" max="2026" step="1" value="1100" />
+    </div>
+
+    <div class="row">
+      <label>Window size</label>
+      <div style="flex:1;">
+        <input id="windowSize" type="number" value="25" min="1" max="200" style="width:72px;padding:6px;border-radius:6px;border:1px solid #ddd" />
+        <span style="margin-left:8px;color:#666">years</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <label>Current range</label>
+      <div id="rangeLabel" style="font-weight:600">1100 — 1124</div>
+    </div>
+
+    <div class="row">
+      <button id="playBtn" class="btn">Play</button>
+      <button id="stepBack" class="btn secondary">◀ 25y</button>
+      <button id="stepForward" class="btn secondary">25y ▶</button>
+      <button id="resetBtn" class="btn secondary">Reset</button>
+    </div>
+
+    <div class="row">
+      <label>Type filter</label>
+      <select id="typeFilter" style="flex:1;padding:6px;border-radius:6px;border:1px solid #ddd">
+        <option value="all">All types</option>
+      </select>
+    </div>
+
+    <div class="legend" id="legend"></div>
+
+    <div class="footer">Data source: <strong>OpenAI</strong></div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- MarkerCluster JS -->
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+  <!-- App script -->
+  <script src="app.js"></script>
+</body>
+</html>
